@@ -1,47 +1,824 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Custom corporate outfits for offices, hotels, restaurants, and retail. Professional tailored apparel solutions for your entire team. Quality bulk branded attire manufacturing."
+    />
+    <meta
+      name="keywords"
+      content="corporate outfits, office attire, custom professional wear, hotel staff apparel, restaurant team wear, bulk tailoring, employee attire, branded outfits"
+    />
+    <meta name="robots" content="index, follow" />
+    <title>
+      Golden Thread | Corporate Attire Tailoring & Professional Outfits
+      Solutions
+    </title>
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              beige: {
+                50: "#faf9f7",
+                100: "#f5f3ef",
+                200: "#e8e4dc",
+              },
+              gold: {
+                300: "#f4d03f",
+                400: "#d4af37",
+                500: "#c5a028",
+                600: "#b8941e",
+              },
+              navy: {
+                700: "#1e3a5f",
+                800: "#152238",
+                900: "#0a1628",
+              },
+            },
+            fontFamily: {
+              logo: ["Cinzel", "serif"],
+              display: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="it_solution_assignment">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>it_solution_assignment</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <script>
-    function toggleFullScreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
+    <style>
+      /* Custom smooth scrolling */
+      html {
+        scroll-behavior: smooth;
       }
-    }
-  </script>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
+
+      /* Hero background with image */
+      .hero-gradient {
+        background: linear-gradient(
+            135deg,
+            rgba(10, 22, 40, 0.92) 0%,
+            rgba(21, 34, 56, 0.85) 100%
+          ),
+          url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&q=80")
+            center/cover no-repeat;
+        background-attachment: fixed;
+      }
+
+      .section-gradient {
+        background: linear-gradient(to bottom, #f8f9fb 0%, #eef1f5 100%);
+      }
+
+      /* Parallax effect */
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* Scroll reveal animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in {
+        opacity: 0;
+        transition: opacity 0.8s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Stagger animation delays */
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* Image hover effects */
+      .hover-zoom {
+        overflow: hidden;
+      }
+
+      .hover-zoom img {
+        transition: transform 0.5s ease;
+      }
+
+      .hover-zoom:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Decorative elements */
+      .decorative-line {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, #d4af37, #b8941e, #9c7a19);
+        margin: 0 auto 1.5rem;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Premium card effects */
+      .premium-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fb 100%);
+        border: 2px solid rgba(212, 175, 55, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .premium-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25),
+          0 0 0 2px rgba(212, 175, 55, 0.4);
+        border-color: rgba(212, 175, 55, 0.4);
+      }
+
+      /* Glassmorphism button */
+      .glass-button {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Gold accent */
+      .gold-accent {
+        color: #d4af37;
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Premium shadow */
+      .shadow-premium {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+          0 1px 8px rgba(0, 0, 0, 0.06);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white text-gray-900 font-sans antialiased"
+    style="font-family: 'Inter', sans-serif"
+  >
+    <!-- ===========================
+         HERO SECTION
+    =========================== -->
+    <section class="hero-gradient text-white py-20 px-6 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Brand Logo -->
+        <div class="mb-8 fade-in">
+          <img
+            src="logo.png"
+            alt="Golden Thread Logo"
+            class="w-24 h-24 md:w-32 md:h-32 mx-auto mb-4"
+            style="filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4))"
+          />
+          <h2
+            class="text-2xl md:text-3xl font-logo font-semibold gold-accent tracking-widest"
+            style="letter-spacing: 0.2em"
+          >
+            GOLDEN THREAD
+          </h2>
+        </div>
+
+        <!-- Main Headline -->
+        <h1
+          class="text-4xl md:text-6xl font-display font-bold leading-tight mb-6 tracking-tight"
+        >
+          Professional Outfits.<br />Designed for Your
+          <span class="gold-accent">Brand</span>.
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-lg md:text-2xl text-gray-300 mb-4 leading-relaxed">
+          Custom corporate attire for offices, hotels & retail<br
+            class="hidden md:block"
+          />
+          Tailored to your brand identity
+        </p>
+
+        <p class="text-base md:text-lg text-gray-400 mb-10">
+          Consistent quality. Professional appearance. Bulk manufacturing.
+        </p>
+
+        <!-- Primary CTA -->
+        <a
+          href="https://wa.me/919033550092?text=Hi%20Golden%20Thread,%20I%20want%20to%20discuss%20corporate%20workwear%20requirements%20for%20my%20business."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-navy-900 font-bold text-lg px-12 py-6 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105"
+          style="box-shadow: 0 10px 40px rgba(212, 175, 55, 0.5)"
+        >
+          <svg
+            class="inline-block w-5 h-5 mr-2"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          Get Bulk Quote
+        </a>
+
+        <p class="text-sm text-gray-400 mt-6">
+          <svg
+            class="inline-block w-4 h-4"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Quick response • Free samples • Volume pricing
+        </p>
+      </div>
+    </section>
+
+    <!-- ===========================
+         FABRIC SHOWCASE SECTION
+    =========================== -->
+    <section class="py-12 bg-gradient-to-b from-navy-900 to-navy-800">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="hover-zoom rounded-xl overflow-hidden shadow-premium fade-in-up"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=600&q=80"
+              alt="Premium suit fabrics"
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div
+            class="hover-zoom rounded-xl overflow-hidden shadow-premium fade-in-up stagger-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+              alt="Professional suit tailoring"
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div
+            class="hover-zoom rounded-xl overflow-hidden shadow-premium fade-in-up stagger-2"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80"
+              alt="Business attire craftsmanship"
+              class="w-full h-48 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         PROBLEM → SOLUTION SECTION
+    =========================== -->
+    <section class="py-16 px-6 md:py-24 bg-gradient-to-b from-white to-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <!-- Problem -->
+        <div class="text-center mb-16 fade-in-up">
+          <div class="decorative-line"></div>
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6"
+          >
+            Struggling with Employee Attire Challenges?
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8 text-left mt-12">
+            <div class="premium-card p-8 rounded-xl fade-in-up stagger-1">
+              <h3 class="font-semibold text-xl mb-3">Inconsistent Sizes</h3>
+              <p class="text-gray-600">
+                Off-the-shelf apparel doesn't fit your diverse team properly
+              </p>
+            </div>
+            <div class="premium-card p-8 rounded-xl fade-in-up stagger-2">
+              <h3 class="font-semibold text-xl mb-3">Poor Quality</h3>
+              <p class="text-gray-600">
+                Cheap outfits wear out quickly, increasing replacement costs
+              </p>
+            </div>
+            <div class="premium-card p-8 rounded-xl fade-in-up stagger-3">
+              <h3 class="font-semibold text-xl mb-3">Long Lead Times</h3>
+              <p class="text-gray-600">
+                Slow suppliers can't deliver bulk orders on time
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution -->
+        <div class="text-center border-t-2 border-gold-400/30 pt-16 fade-in-up">
+          <div class="decorative-line"></div>
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6"
+          >
+            Custom Corporate Attire: Designed for Your
+            <span class="gold-accent">Team</span>
+          </h2>
+          <p
+            class="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed"
+          >
+            We manufacture high-quality custom corporate attire at scale. From
+            design consultation to bulk production, we handle everything.
+            Perfect fit for every team member, consistent brand identity across
+            your organization.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+            <div class="flex items-start space-x-3 fade-in-up stagger-1">
+              <span class="text-gold-400 text-2xl font-bold">✓</span>
+              <div>
+                <h4 class="font-semibold text-lg">Bulk Manufacturing</h4>
+                <p class="text-gray-600">
+                  Handle orders from 50 to 5000+ units with consistent quality
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 fade-in-up stagger-2">
+              <span class="text-gold-400 text-2xl font-bold">✓</span>
+              <div>
+                <h4 class="font-semibold text-lg">Brand Customization</h4>
+                <p class="text-gray-600">
+                  Logo embroidery, color matching, and custom design options
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 fade-in-up stagger-3">
+              <span class="text-gold-400 text-2xl font-bold">✓</span>
+              <div>
+                <h4 class="font-semibold text-lg">Durable Fabrics</h4>
+                <p class="text-gray-600">
+                  Industrial-grade materials designed for daily professional
+                  wear
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 fade-in-up stagger-4">
+              <span class="text-gold-400 text-2xl font-bold">✓</span>
+              <div>
+                <h4 class="font-semibold text-lg">Quick Turnaround</h4>
+                <p class="text-gray-600">
+                  Reliable delivery timelines with volume pricing discounts
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         HOW IT WORKS SECTION
+    =========================== -->
+    <section class="section-gradient py-16 px-6 md:py-24">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center fade-in-up">
+          <div class="decorative-line"></div>
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4"
+          >
+            Our <span class="gold-accent">B2B</span> Process
+          </h2>
+          <p class="text-gray-600 mb-16 text-lg">
+            From consultation to delivery in 3 streamlined steps
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+          <!-- Step 1 -->
+          <div class="text-center scale-in stagger-1">
+            <div class="hover-zoom rounded-lg overflow-hidden mb-6 shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
+                alt="Taking measurements"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div
+              class="bg-gradient-to-br from-gold-400 to-gold-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg"
+              style="box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3)"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-bold mb-3">Consult & Design</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Share your requirements, team size, and design preferences. We
+              provide fabric samples and design mockups for approval.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="text-center scale-in stagger-2">
+            <div class="hover-zoom rounded-lg overflow-hidden mb-6 shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80"
+                alt="Sewing machine stitching"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div
+              class="bg-gradient-to-br from-gold-400 to-gold-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg"
+              style="box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3)"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-bold mb-3">Manufacture</h3>
+            <p class="text-gray-600 leading-relaxed">
+              We measure your team and manufacture professional attire in bulk.
+              Quality checks at every stage ensure consistency.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="text-center scale-in stagger-3">
+            <div class="hover-zoom rounded-lg overflow-hidden mb-6 shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&q=80"
+                alt="Delivery service"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div
+              class="bg-gradient-to-br from-gold-400 to-gold-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg"
+              style="box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3)"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-bold mb-3">Deliver</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Bulk delivery to your location. We provide post-delivery
+              alterations and ongoing support for new hires.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         PARALLAX IMAGE DIVIDER
+    =========================== -->
+    <section
+      class="parallax h-48 md:h-64 flex items-center justify-center"
+      style="
+        background-image: linear-gradient(
+            rgba(10, 22, 40, 0.85),
+            rgba(21, 34, 56, 0.85)
+          ),
+          url('https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=1920&q=80');
+      "
+    >
+      <div class="text-white text-center px-6 fade-in">
+        <h3 class="text-3xl md:text-5xl font-display font-bold mb-4">
+          Crafted with <span class="gold-accent">Precision</span>
+        </h3>
+        <p class="text-lg md:text-xl text-gray-200">
+          Every stitch tells a story of quality
+        </p>
+      </div>
+    </section>
+
+    <!-- ===========================
+         TRUST & CREDIBILITY SECTION
+    =========================== -->
+    <section
+      class="py-12 px-6 md:py-16 bg-gradient-to-br from-navy-800 to-navy-900 text-white"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="fade-in-up">
+          <div class="decorative-line"></div>
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold text-white mb-12"
+          >
+            Why Choose <span class="gold-accent">Us</span>?
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 fade-in-up stagger-1">
+            <div class="text-4xl mb-4">
+              <img
+                src="https://img.icons8.com/color/96/medal.png"
+                alt="experience"
+                class="w-16 h-16 mx-auto"
+              />
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-white">
+              15+ Years Experience
+            </h3>
+            <p class="text-gray-300">
+              Trusted by 200+ corporate clients including hotels, banks,
+              restaurants, and retail chains
+            </p>
+          </div>
+
+          <div class="p-6 fade-in-up stagger-2">
+            <div class="text-4xl mb-4">
+              <img
+                src="https://img.icons8.com/fluency/96/trophy.png"
+                alt="quality"
+                class="w-16 h-16 mx-auto"
+              />
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-white">Quality Guarantee</h3>
+            <p class="text-gray-300">
+              Industrial-grade stitching with 6-month durability warranty and
+              free replacement for defects
+            </p>
+          </div>
+
+          <div class="p-6 fade-in-up stagger-3">
+            <div class="text-4xl mb-4">
+              <img
+                src="https://img.icons8.com/fluency/96/scales.png"
+                alt="scalable"
+                class="w-16 h-16 mx-auto"
+              />
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-white">
+              Scalable Solutions
+            </h3>
+            <p class="text-gray-300">
+              From small businesses to large enterprises, we scale production to
+              meet your exact requirements
+            </p>
+          </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div
+          class="mt-16 bg-gradient-to-br from-gold-400/10 to-gold-500/5 rounded-2xl p-8 md:p-12 fade-in-up shadow-premium"
+          style="
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+          "
+        >
+          <div class="flex justify-center mb-4">
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-lg"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
+                alt="Customer"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <p
+            class="text-gray-100 text-lg md:text-xl italic leading-relaxed mb-4"
+          >
+            "Outstanding quality and reliability. They manufactured 200 pieces
+            of professional outfits for our hotel staff with perfect
+            consistency. The team looks professional and the attire is holding
+            up excellently."
+          </p>
+          <p class="font-semibold text-white">
+            — Priya Sharma, HR Manager, Grand Plaza Hotel
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         SERVICES OFFERED (Brief)
+    =========================== -->
+    <section class="bg-white py-16 px-6 md:py-24">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center fade-in-up">
+          <div class="decorative-line"></div>
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-12"
+          >
+            Industries We <span class="gold-accent">Serve</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div
+            class="premium-card p-8 rounded-xl text-center scale-in stagger-1"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="https://img.icons8.com/fluency/96/company.png"
+                alt="corporate"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h4 class="font-semibold text-gray-900">Corporate Offices</h4>
+          </div>
+          <div
+            class="premium-card p-8 rounded-xl text-center scale-in stagger-2"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="https://img.icons8.com/fluency/96/3-star-hotel.png"
+                alt="hotel"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h4 class="font-semibold text-gray-900">Hotels & Hospitality</h4>
+          </div>
+          <div
+            class="premium-card p-8 rounded-xl text-center scale-in stagger-3"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="https://img.icons8.com/fluency/96/restaurant.png"
+                alt="restaurant"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h4 class="font-semibold text-gray-900">Restaurants & Cafes</h4>
+          </div>
+          <div
+            class="premium-card p-8 rounded-xl text-center scale-in stagger-4"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="https://img.icons8.com/fluency/96/shop.png"
+                alt="retail"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h4 class="font-semibold text-gray-900">Retail & Showrooms</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         FINAL CTA SECTION
+    =========================== -->
+    <section
+      class="py-20 px-6 md:py-32 bg-gradient-to-br from-navy-900 to-navy-800 text-white"
+    >
+      <div class="max-w-3xl mx-auto text-center">
+        <h2
+          class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight"
+        >
+          Ready to Upgrade Your Team's
+          <span class="gold-accent">Professional Image</span>?
+        </h2>
+        <p class="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
+          Get a free consultation and bulk quote. We'll help you design the
+          perfect professional attire for your business.
+        </p>
+
+        <!-- Primary CTA (repeated) -->
+        <a
+          href="https://wa.me/919033550092?text=Hi%20Golden%20Thread,%20I%20want%20to%20discuss%20corporate%20workwear%20requirements%20for%20my%20business."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-navy-900 font-bold text-lg px-12 py-6 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105"
+          style="box-shadow: 0 10px 40px rgba(212, 175, 55, 0.5)"
+        >
+          <svg
+            class="inline-block w-5 h-5 mr-2"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          Get Bulk Quote
+        </a>
+
+        <p class="text-sm text-gray-400 mt-8">
+          Business Hours: Monday to Saturday • 9 AM - 7 PM
+        </p>
+      </div>
+    </section>
+
+    <!-- ===========================
+         FOOTER
+    =========================== -->
+    <footer
+      class="bg-navy-900 text-gray-400 py-8 px-6 text-center text-sm border-t-2 border-gold-400/20"
+    >
+      <div class="mb-4">
+        <img
+          src="logo.png"
+          alt="Golden Thread Logo"
+          class="w-16 h-16 mx-auto mb-2 opacity-80"
+        />
+        <p
+          class="text-gold-400 font-logo font-semibold text-base tracking-widest"
+          style="letter-spacing: 0.15em"
+        >
+          GOLDEN THREAD
+        </p>
+      </div>
+      <p>&copy; 2025 Golden Thread. All rights reserved.</p>
+      <p class="mt-2">
+        Professional outfits manufacturing for businesses across India
+      </p>
+    </footer>
+
+    <!-- ===========================
+         SCROLL REVEAL JAVASCRIPT
+    =========================== -->
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            // Optional: Unobserve after animation to improve performance
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation classes
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in-up, .fade-in, .scale-in"
+        );
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+
+      // Optional: Track CTA clicks for analytics (if needed later)
+      document.querySelectorAll('a[href*="wa.me"]').forEach((button) => {
+        button.addEventListener("click", function () {
+          console.log("WhatsApp CTA clicked");
+          // Add analytics tracking here if needed
+        });
+      });
+
+      // Smooth parallax scroll effect
+      window.addEventListener("scroll", () => {
+        const parallaxElements = document.querySelectorAll(".parallax");
+        parallaxElements.forEach((element) => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * 0.5;
+          element.style.transform = `translate3d(0, ${rate}px, 0)`;
+        });
+      });
+    </script>
+  </body>
 </html>
