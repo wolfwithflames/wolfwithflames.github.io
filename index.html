@@ -17,7 +17,8 @@
   <!-- Open Graph / Facebook SEO -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Golden Thread | Professional Corporate Outfits" />
-  <meta property="og:description" content="Custom corporate outfits for offices, hotels, restaurants, and retail. Quality volume manufacturing." />
+  <meta property="og:description"
+    content="Custom corporate outfits for offices, hotels, restaurants, and retail. Quality volume manufacturing." />
   <meta property="og:url" content="https://wolfwithflames.github.io/" />
   <meta property="og:image" content="https://wolfwithflames.github.io/og_thumbnail.png" />
   <meta property="og:site_name" content="Golden Thread" />
@@ -579,49 +580,6 @@
   </section>
 
   <!-- ===========================
-         LEAD MAGNET SECTION (NEW)
-    =========================== -->
-  <section class="py-16 md:py-24 bg-gold-400 relative overflow-hidden text-navy-900">
-    <div
-      class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat">
-    </div>
-    <div class="max-w-5xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-      <div class="md:w-1/2 fade-in-left">
-        <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 uppercase tracking-wider">Free Sample Kit</h2>
-        <p class="text-xl mb-8 font-medium">Not ready to order? Get a feel for our premium quality firsthand. Request a
-          free fabric swatches and sample kit delivered to your office.</p>
-        <ul class="space-y-3 mb-8 text-lg">
-          <li><i class="fas fa-check-circle text-navy-800 mr-2"></i> Feel the material quality</li>
-          <li><i class="fas fa-check-circle text-navy-800 mr-2"></i> See color vibrancy</li>
-          <li><i class="fas fa-check-circle text-navy-800 mr-2"></i> Review stitching standards</li>
-        </ul>
-      </div>
-      <div class="md:w-1/2 w-full fade-in-right">
-        <div class="glass-panel-light p-8 rounded-2xl">
-          <h3 class="text-2xl font-bold mb-6 text-center font-display">Request Your Free Kit</h3>
-          <form action="#" method="POST" class="space-y-4">
-            <div>
-              <input type="text" placeholder="Full Name" required class="form-input" />
-            </div>
-            <div>
-              <input type="text" placeholder="Company Name" required class="form-input" />
-            </div>
-            <div>
-              <input type="email" placeholder="Business Email" required class="form-input" />
-            </div>
-            <button type="submit"
-              class="w-full bg-navy-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-navy-800 transition-colors shadow-lg">
-              Send My Sample Kit <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-          </form>
-          <p class="text-xs text-center text-gray-500 mt-4"><i class="fas fa-lock text-navy-700"></i> Your data is
-            secure with us.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===========================
          HOW IT WORKS SECTION
     =========================== -->
   <section class="section-gradient py-20 px-6 md:py-28">
@@ -772,21 +730,23 @@
           Quote in 24hrs!
         </div>
         <h3 class="text-3xl font-display font-bold mb-8">Request a Quote</h3>
-        <form action="#" method="POST" class="space-y-5">
+        <form action="https://formspree.io/f/xlgadgwz" method="POST" class="space-y-5">
+          <!-- Hidden field to identify the form in Formspree -->
+          <input type="hidden" name="_subject" value="New Quote Request!">
           <div class="grid grid-cols-2 gap-5">
-            <input type="text" placeholder="First Name" required
+            <input type="text" name="First Name" placeholder="First Name" required
               class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900" />
-            <input type="text" placeholder="Last Name" required
+            <input type="text" name="Last Name" placeholder="Last Name" required
               class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900" />
           </div>
-          <input type="text" placeholder="Company Name" required
+          <input type="text" name="Company Name" placeholder="Company Name" required
             class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900" />
-          <input type="email" placeholder="Work Email" required
+          <input type="email" name="Work Email" placeholder="Work Email" required
             class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900" />
           <div class="grid grid-cols-2 gap-5">
-            <input type="tel" placeholder="Phone Number" required
+            <input type="tel" name="Phone Number" placeholder="Phone Number" required
               class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900" />
-            <select
+            <select name="Team Size" requiredx
               class="form-input border-none bg-white/10 text-gray-400 focus:bg-white focus:text-navy-900 appearance-none">
               <option value="" disabled selected>Team Size</option>
               <option value="10-50">10-50 Employees</option>
@@ -794,7 +754,7 @@
               <option value="200+">200+ Employees</option>
             </select>
           </div>
-          <textarea placeholder="Tell us about your attire needs..." rows="3"
+          <textarea name="Message" placeholder="Tell us about your attire needs..." rows="3" required
             class="form-input border-none bg-white/10 text-white placeholder-gray-400 focus:bg-white focus:text-navy-900 resize-none"></textarea>
 
           <button type="submit"
